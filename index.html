@@ -1,0 +1,97 @@
+<html>
+<head>	
+	<title>Bithday List App By Anurag Gaiwal</title>
+	<style>
+		*{
+		  font-size:50px
+		}
+
+		body {
+		  background-color: lightblue;
+		  font-family: Arial, sans-serif; /* Set a base font family */
+		}
+
+		h1 {
+		  font-size: 2em; 
+		  margin-bottom: 20px;
+		}
+
+		input[type="text"] {
+		  padding: 10px;
+		  border: 1px solid #ccc;
+		  margin-bottom: 15px;
+		}
+
+		input[type="submit"] {
+		  background-color: #4CAF50; 
+		  color: white;
+		  padding: 10px 20px;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer; 
+		}
+		
+		#msg {	
+		  color: #333; 
+		}
+
+		.btn{
+			width:15%;
+		}
+		
+		.container{
+			border: 2px solid black;
+			width: 50%;
+		}
+
+	</style>
+</head>
+
+<body>
+<center>
+	<h1> Birthday Party Friends List Management App</h1>
+	<form onsubmit="operations()">
+		<input type="submit" value="Add" class="btn"/>
+		<input type="submit" value="Remove" class="btn"/>
+		<input type="submit" value="Show" class="btn"/>
+	</form>
+	<div class="container">
+	<h2 id="msg"/>
+	</div>
+	<script>
+		let names = ["Anurag"];
+		function operations(){		
+			event.preventDefault();
+			let msg = document.getElementById("msg");
+			let ele = document.activeElement.value;
+			
+			if(ele == "Add"){
+				let name = prompt("Enter one name at a time");
+				if(name != ""){
+					names.push(name);
+					msg.innerHTML = names;
+				}
+			} else if(ele == "Remove"){
+				let name = prompt("Enter name to remove, one at a time");
+				if(name != ""){
+					let pos = names.indexOf(name);
+					if(pos == -1)
+						alert(name + " not found");
+					else {
+						names.splice(pos, 1);
+						alert(name+ " removed")
+					}
+					msg.innerHTML = names;
+
+				}
+			} else if(ele == "Show"){
+				msg.innerHTML = names;
+			}
+			
+		}
+	</script>
+</center>
+</body>
+
+
+</html>
